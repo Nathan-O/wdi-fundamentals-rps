@@ -1,3 +1,7 @@
+
+//Automatically runs the game when "run" is clicked.
+playToFive();
+
 ////////////////////////////////////////////////
 /*   Provided Code - Please Don't Edit   */
 ////////////////////////////////////////////////
@@ -7,6 +11,7 @@ function getInput() {
     console.log("Please choose either 'rock', 'paper', or 'scissors'.")
     return prompt();
 }
+
 function randomPlay() {
     var randomNumber = Math.random();
     if (randomNumber < 0.33) {
@@ -24,17 +29,11 @@ function randomPlay() {
 
 function getPlayerMove(move) {
     move = move || getInput()
-    
-    console.log(1);
-    
     return move;
 }
 
 function getComputerMove(move) {
     move = move || randomPlay();
-    
-    console.log(2);
-    
     return move;
 }
 
@@ -64,41 +63,34 @@ function getWinner(playerMove,computerMove) {
         } else if (computerMove === 'scissors') {
             winner = 'Tie';
         }
-    }
-    console.log(3); 
+    } 
     return winner;
 }
 
 function playToFive() {
     console.log("Let's play Rock, Paper, Scissors");
     var playerWins = 0;
-    var computerWins = 0; 
-    
+    var computerWins = 0;    
     while ((playerWins < 5) && (computerWins < 5)) {
-    var playerMove = getPlayerMove();
-    var computerMove = getComputerMove();
-    var winner = getWinner(playerMove, computerMove); 
+        var playerMove = getPlayerMove();
+        var computerMove = getComputerMove();
+        var winner = getWinner(playerMove, computerMove); 
         if (winner === 'Player') {
-            console.log(4);
             playerWins += 1;
         } else if (winner === 'Computer') {
-            console.log(5);
             computerWins += 1;
         } else if (winner === 'Tie') {
-            console.log(6);
             playerWins = playerWins;
             computerWins = computerWins;
         }
-   
-    console.log('Player chose ' + playerMove + ' while Computer chose ' + computerMove);
-    if (winner != 'Tie') {
-        console.log(winner + ' ' + 'wins!');
-    } else {
-        console.log('Draw!')
-    }
-    console.log('The score is currently ' + playerWins + ' to ' + computerWins + '\n');
+        console.log('Player chose ' + playerMove + ' while Computer chose ' + computerMove);
+        if (winner != 'Tie') {
+            console.log(winner + ' ' + 'wins!');
+        } else {
+            console.log('Draw!')
+        }
+        console.log('The score is currently ' + playerWins + ' to ' + computerWins + '\n');
     }
     return [playerWins, computerWins];
     
 }
-
